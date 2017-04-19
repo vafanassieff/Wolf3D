@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libesdl.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qfremeau <qfremeau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vafanass <vafanass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 10:14:03 by qfremeau          #+#    #+#             */
-/*   Updated: 2017/03/22 20:46:23 by qfremeau         ###   ########.fr       */
+/*   Updated: 2017/04/19 17:31:14 by vafanass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ SDL_Color		esdl_int_to_color(int color);
 void			esdl_put_pixel(SDL_Surface *surf, const int x, const int y,
 				const int color);
 Uint32			esdl_read_pixel(SDL_Surface *surf, const int x, const int y);
+
+void		print_pixel(uint32_t pixel, SDL_Surface *surface);
 
 SDL_Rect		*esdl_copy_rect(const SDL_Rect rect);
 SDL_Rect		esdl_rect(const int x, const int y, const int w, const int h);

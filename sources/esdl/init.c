@@ -6,7 +6,7 @@
 /*   By: vafanass <vafanass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 10:11:48 by qfremeau          #+#    #+#             */
-/*   Updated: 2017/04/19 12:16:29 by vafanass         ###   ########.fr       */
+/*   Updated: 2017/04/19 12:54:33 by vafanass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int			esdl_init(t_esdl *esdl, const int rx, const int ry, char *name)
 		return (-1);
 	}
 	esdl->eng.win = SDL_CreateWindow(name, SDL_WINDOWPOS_CENTERED,
-	SDL_WINDOWPOS_CENTERED, rx, ry, SDL_WINDOW_SHOWN);
+	SDL_WINDOWPOS_CENTERED, rx, ry, 0);
 	if (!esdl->eng.win)
 	{
 		return (-1);
