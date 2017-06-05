@@ -6,7 +6,7 @@
 /*   By: vafanass <vafanass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 10:14:03 by qfremeau          #+#    #+#             */
-/*   Updated: 2017/04/19 17:31:14 by vafanass         ###   ########.fr       */
+/*   Updated: 2017/06/05 15:21:14 by vafanass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int				esdl_init(t_esdl *esdl, const int rx, const int ry, char *name);
 SDL_Surface		*esdl_create_surface(int width, int height);
 SDL_Surface		*esdl_scale_surface(SDL_Surface *surf, int width, int height);
 
-void			esdl_update_events(t_input *in, int *run);
+void			esdl_update_events(t_input *in);
 int				esdl_check_input(t_input *in, const int input);
 
 void			esdl_fps_limit(t_esdl *esdl);

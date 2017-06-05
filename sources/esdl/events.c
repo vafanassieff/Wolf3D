@@ -6,7 +6,7 @@
 /*   By: vafanass <vafanass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 14:47:31 by qfremeau          #+#    #+#             */
-/*   Updated: 2017/04/19 12:05:49 by vafanass         ###   ########.fr       */
+/*   Updated: 2017/06/05 16:28:48 by vafanass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int					esdl_check_input(t_input *in, const int input)
 	return (0);
 }
 
-void				esdl_update_events(t_input *in, int *run)
+void				esdl_update_events(t_input *in)
 {
 	SDL_Event		event;
 	int				ret;
@@ -68,12 +68,6 @@ void				esdl_update_events(t_input *in, int *run)
 		if (event.type == SDL_QUIT || esdl_check_input(in, SDL_SCANCODE_ESCAPE))
 		{
 			in->quit = 1;
-			*run = 0;
-		}
-		else if (event.type == SDL_WINDOWEVENT)
-		{
-			if (event.window.event == SDL_WINDOWEVENT_RESIZED)
-				in->window = SDL_WINDOWEVENT_RESIZED;
 		}
 		if ((ret += esdl_get_input(&event, in)) > 0)
 			break ;

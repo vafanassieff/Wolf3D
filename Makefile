@@ -48,9 +48,9 @@ SRC =		esdl/color.c\
 			esdl/init.c\
 			esdl/image.c\
 			esdl/pixel.c\
-			esdl/rect.c\
 			esdl/surface.c\
-			esdl/ttf.c\
+			wolf_events.c\
+			display_wolf.c\
 			main.c
 
 OBJ =		$(SRC:.c=.o)
