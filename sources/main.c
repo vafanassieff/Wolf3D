@@ -6,7 +6,7 @@
 /*   By: vafanass <vafanass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 12:17:42 by vafanass          #+#    #+#             */
-/*   Updated: 2017/06/06 15:56:06 by vafanass         ###   ########.fr       */
+/*   Updated: 2017/06/06 17:56:53 by vafanass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,11 @@ void 	init_wolf(t_wolf *wolf)
 	wolf->planeY = 0.90;
 	wolf->wall = SDL_LoadBMP("./texture/RedgreyeagleD.bmp");
 	wolf->esdl->eng.input->quit = 0;
+	SDL_PixelFormat* pixelFormat = wolf->wall->format;
+uint32_t pixelFormatEnum = pixelFormat->format;
+const char* surfacePixelFormatName = SDL_GetPixelFormatName(pixelFormatEnum);
+SDL_Log("The surface's pixelformat is %s", surfacePixelFormatName);
+
 }
 
 static void	loop_hook(t_wolf *wolf)

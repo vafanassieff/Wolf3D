@@ -6,7 +6,7 @@
 /*   By: vafanass <vafanass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/05 13:34:03 by vafanass          #+#    #+#             */
-/*   Updated: 2017/06/06 15:40:17 by vafanass         ###   ########.fr       */
+/*   Updated: 2017/06/06 23:56:07 by vafanass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,8 +97,9 @@ void	pixel_to_format(t_wolf *wolf)
 	uint8_t g;
 	uint8_t b;
 
-	r = wolf->pixel >> 0;
-	g = wolf->pixel >> 8;
-	b = wolf->pixel >> 16;
-	wolf->pixel_put = 0xFF << 24 | b << 16 | g << 8 | r << 0;
+	//b = wolf->pixel >> 1;
+	//g = wolf->pixel >> 4;
+	//r = wolf->pixel >> 8;
+	SDL_GetRGB(wolf->pixel, wolf->wall->format, &b,&g,&r);
+	wolf->pixel_put = 255 << 24 | r << 16 | g << 8 | b << 0;
 }
