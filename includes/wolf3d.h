@@ -6,7 +6,7 @@
 /*   By: vafanass <vafanass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 12:06:18 by vafanass          #+#    #+#             */
-/*   Updated: 2017/06/05 17:23:14 by vafanass         ###   ########.fr       */
+/*   Updated: 2017/06/06 15:55:14 by vafanass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef	struct		s_wolf
 	SDL_Surface		*surf;
 	SDL_Rect		*rect;
 	SDL_Texture		*text;
+	SDL_Surface		*wall;
 	int				render;
 	int				w;
 	int				h;
@@ -36,6 +37,11 @@ typedef	struct		s_wolf
 	int				drawStart;
 	int				drawEnd;
 	int				color;
+	int 			texX;
+	int 			texY;
+	int				x;
+	int				y;
+	int				d;
 	double			time;
 	double			oldtime;
 	double			posX;
@@ -57,11 +63,19 @@ typedef	struct		s_wolf
 	double			moveSpeed;
 	double			rotSpeed;
 	double			frameTime;
-	
+	double 			oldDirX;
+	double 			oldPlaneX;
+	double 			wallX;
+	uint32_t 		pixel;
+	uint32_t 		pixel_put;
 }					t_wolf;
 
 void	wolf_events(t_wolf *wolf, t_input *in);
 void	display_wolf(t_wolf *wolf);
-void 			draw_line(int x, t_wolf *wolf);
+void 	draw_line(int x, t_wolf *wolf);
 void	fill_surf(int color, t_wolf *wolf);
+void	fill_skybox(int color, t_wolf *wolf);
+void	fill_floor(int color, t_wolf *wolf);
+void	wolf_raycasting(t_wolf *wolf);
+void	pixel_to_format(t_wolf *wolf);
 #endif

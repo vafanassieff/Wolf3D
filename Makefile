@@ -51,6 +51,7 @@ SRC =		esdl/color.c\
 			esdl/surface.c\
 			wolf_events.c\
 			display_wolf.c\
+			raycasting.c\
 			main.c
 
 OBJ =		$(SRC:.c=.o)

@@ -6,7 +6,7 @@
 /*   By: vafanass <vafanass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/05 13:34:03 by vafanass          #+#    #+#             */
-/*   Updated: 2017/06/05 17:24:06 by vafanass         ###   ########.fr       */
+/*   Updated: 2017/06/06 15:40:17 by vafanass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,26 @@ void draw_line(int x, t_wolf *wolf)
 {
 	int y1;
 	int y2;
-	
+	int y;
+
 	y1 = wolf->drawStart;
 	y2 = wolf->drawEnd;
 	while (y1 <= y2)
 	{
 		esdl_put_pixel(wolf->surf, x, y1, wolf->color);
 		y1++;
+	}
+	y1 = wolf->drawStart;
+	y = 0;
+	while (y <= y1)
+	{
+		esdl_put_pixel(wolf->surf, x, y, 0xFFFFACA6);
+		y++;
+	}
+	while (y2 <= wolf->h)
+	{
+		esdl_put_pixel(wolf->surf, x, y2, 0xFFCDCDC1);
+		y2++;
 	}
 }
 
@@ -48,4 +61,44 @@ void	fill_surf(int color, t_wolf *wolf)
 			esdl_put_pixel(wolf->surf, x, y, color);
 		}
 	}
+}
+
+void	fill_skybox(int color, t_wolf *wolf)
+{
+	int y = -1;
+	int x;
+	while (++y < wolf->rect->h / 2)
+	{
+		x = -1;
+		while (++x < wolf->rect->w)
+		{
+			esdl_put_pixel(wolf->surf, x, y, color);
+		}
+	}
+}
+
+void	fill_floor(int color, t_wolf *wolf)
+{
+	int y = wolf->rect->h / 2;
+	int x;
+	while (++y < wolf->rect->h)
+	{
+		x = -1;
+		while (++x < wolf->rect->w)
+		{
+			esdl_put_pixel(wolf->surf, x, y, color);
+		}
+	}
+}
+
+void	pixel_to_format(t_wolf *wolf)
+{
+	uint8_t r;
+	uint8_t g;
+	uint8_t b;
+
+	r = wolf->pixel >> 0;
+	g = wolf->pixel >> 8;
+	b = wolf->pixel >> 16;
+	wolf->pixel_put = 0xFF << 24 | b << 16 | g << 8 | r << 0;
 }

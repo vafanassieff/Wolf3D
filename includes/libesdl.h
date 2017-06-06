@@ -6,7 +6,7 @@
 /*   By: vafanass <vafanass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 10:14:03 by qfremeau          #+#    #+#             */
-/*   Updated: 2017/06/05 15:21:14 by vafanass         ###   ########.fr       */
+/*   Updated: 2017/06/06 15:40:23 by vafanass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void			esdl_put_pixel(SDL_Surface *surf, const int x, const int y,
 				const int color);
 Uint32			esdl_read_pixel(SDL_Surface *surf, const int x, const int y);
 
-void		print_pixel(uint32_t pixel, SDL_Surface *surface);
+void			print_pixel(uint32_t pixel, SDL_Surface *surface);
 
 SDL_Rect		*esdl_copy_rect(const SDL_Rect rect);
 SDL_Rect		esdl_rect(const int x, const int y, const int w, const int h);
