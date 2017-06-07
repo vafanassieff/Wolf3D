@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   image.c                                            :+:      :+:    :+:   */
+/*   raycasting_util.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vafanass <vafanass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/23 17:57:18 by qfremeau          #+#    #+#             */
-/*   Updated: 2017/06/05 13:29:55 by vafanass         ###   ########.fr       */
+/*   Created: 2017/06/07 16:59:22 by vafanass          #+#    #+#             */
+/*   Updated: 2017/06/07 17:46:23 by vafanass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-int					esdl_init_img(t_esdl *esdl)
+void	wolf_speed(t_wolf *wolf)
 {
-	int		ret;
-
-	ret = 0;
-	if (IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG) == -1)
-	{
-		ret = -1;
-	}
-	esdl->img = 1;
-	return (ret);
+	wolf->oldtime = wolf->time;
+	wolf->time = SDL_GetTicks();
+	wolf->frameTime = (wolf->time - wolf->oldtime) / 1000.0;
+	wolf->moveSpeed = wolf->frameTime * 5.0;
+	wolf->rotSpeed = wolf->frameTime * 3.0;
+	//printf("FPS = %f\n", 1.0 / wolf->frameTime);
 }

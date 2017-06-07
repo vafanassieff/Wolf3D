@@ -6,7 +6,7 @@
 /*   By: vafanass <vafanass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 12:10:49 by vafanass          #+#    #+#             */
-/*   Updated: 2017/06/06 15:55:32 by vafanass         ###   ########.fr       */
+/*   Updated: 2017/06/07 15:38:40 by vafanass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,10 @@
 # define WIN_W			1280
 # define WIN_H			720
 
-#define mapWidth 24
-#define mapHeight 24
-#define texWidth 64
-#define texHeight 64
+#define mapWidth 		24
+#define mapHeight 		24
+#define texWidth 		64
+#define texHeight 		64
+#define NB_TEXTURE		8
 
 #endif

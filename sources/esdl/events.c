@@ -5,30 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vafanass <vafanass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/23 14:47:31 by qfremeau          #+#    #+#             */
-/*   Updated: 2017/06/05 16:28:48 by vafanass         ###   ########.fr       */
+/*   Created: 2016/11/23 14:47:31 by cafanass          #+#    #+#             */
+/*   Updated: 2017/06/07 16:15:22 by vafanass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
-
-static int			esdl_get_input(SDL_Event *event, t_input *in)
-{
-	int				ret;
-
-	ret = 0;
-	if (event->type == SDL_KEYDOWN)
-	{
-		in->key[event->key.keysym.scancode] = 1;
-		ret++;
-	}
-	else if (event->type == SDL_KEYUP)
-	{
-		in->key[event->key.keysym.scancode] = 0;
-		ret++;
-	}
-	return (ret);
-}
 
 static int			esdl_get_mouse(SDL_Event *event, t_input *in)
 {
@@ -44,6 +26,24 @@ static int			esdl_get_mouse(SDL_Event *event, t_input *in)
 	{
 		in->button[event->button.button] = 0;
 		ret = SDL_MOUSEBUTTONUP;
+	}
+	return (ret);
+}
+
+static int			esdl_get_input(SDL_Event *event, t_input *in)
+{
+	int				ret;
+
+	ret = 0;
+	if (event->type == SDL_KEYDOWN)
+	{
+		in->key[event->key.keysym.scancode] = 1;
+		ret++;
+	}
+	else if (event->type == SDL_KEYUP)
+	{
+		in->key[event->key.keysym.scancode] = 0;
+		ret++;
 	}
 	return (ret);
 }
@@ -66,9 +66,7 @@ void				esdl_update_events(t_input *in)
 	while (SDL_PollEvent(&event))
 	{
 		if (event.type == SDL_QUIT || esdl_check_input(in, SDL_SCANCODE_ESCAPE))
-		{
 			in->quit = 1;
-		}
 		if ((ret += esdl_get_input(&event, in)) > 0)
 			break ;
 		if ((ret += esdl_get_mouse(&event, in)) > 0)

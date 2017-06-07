@@ -6,7 +6,7 @@
 /*   By: vafanass <vafanass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 10:11:48 by qfremeau          #+#    #+#             */
-/*   Updated: 2017/04/19 12:54:33 by vafanass         ###   ########.fr       */
+/*   Updated: 2017/06/07 13:13:37 by vafanass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,5 @@ int			esdl_init(t_esdl *esdl, const int rx, const int ry, char *name)
 	{
 		return (-1);
 	}
-	if (esdl_init_img(esdl) != 0)
-		return (-1);
 	return (0);
 }

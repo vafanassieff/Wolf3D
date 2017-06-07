@@ -6,7 +6,7 @@
 /*   By: vafanass <vafanass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 17:10:16 by qfremeau          #+#    #+#             */
-/*   Updated: 2017/06/06 15:39:59 by vafanass         ###   ########.fr       */
+/*   Updated: 2017/06/07 13:01:50 by vafanass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,4 @@ Uint32			esdl_read_pixel(SDL_Surface *surface, const int x, const int y)
 	if (bpp == 4)
 		return (*(uint32_t *)p);
 	return (0);
-}
-
-// Debug a virer
-
-void		print_pixel(uint32_t pixel, SDL_Surface *surface)
-{
-	uint8_t r,g,b;
-
-	SDL_GetRGB(pixel, surface->format, &r, &g, &b);
-	printf("r = %u g = %u b = %u\n", r, g,b);
 }

@@ -6,53 +6,25 @@
 /*   By: vafanass <vafanass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/05 13:23:21 by vafanass          #+#    #+#             */
-/*   Updated: 2017/06/06 15:55:37 by vafanass         ###   ########.fr       */
+/*   Updated: 2017/06/07 16:03:45 by vafanass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-int worldMap2[mapWidth][mapHeight]=
-{
-  {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,2,2,2,2,2,0,0,0,0,3,0,3,0,3,0,0,0,1},
-  {1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,3,0,0,0,3,0,0,0,1},
-  {1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,2,2,0,2,2,0,0,0,0,3,0,3,0,3,0,0,0,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,4,0,4,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,4,0,0,0,0,5,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,4,0,4,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,4,0,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
-};
-
 void	wolf_up(t_wolf *wolf)
 {
-	if (!worldMap2[(int)(wolf->posX + wolf->dirX * wolf->moveSpeed)][(int)wolf->posY])
+	if (!wolf->map[(int)(wolf->posX + wolf->dirX * wolf->moveSpeed)][(int)wolf->posY])
 		wolf->posX += wolf->dirX * wolf->moveSpeed;
-	if (!worldMap2[(int)wolf->posX][(int)(wolf->posY + wolf->dirY * wolf->moveSpeed)])
+	if (!wolf->map[(int)wolf->posX][(int)(wolf->posY + wolf->dirY * wolf->moveSpeed)])
 		wolf->posY += wolf->dirY * wolf->moveSpeed;
 }
 
 void	wolf_down(t_wolf *wolf)
 {
-	if (!worldMap2[(int)(wolf->posX - wolf->dirX * wolf->moveSpeed)][(int)wolf->posY])
+	if (!wolf->map[(int)(wolf->posX - wolf->dirX * wolf->moveSpeed)][(int)wolf->posY])
 		wolf->posX -= wolf->dirX * wolf->moveSpeed;
-	if (!worldMap2[(int)wolf->posX][(int)(wolf->posY - wolf->dirY * wolf->moveSpeed)])
+	if (!wolf->map[(int)wolf->posX][(int)(wolf->posY - wolf->dirY * wolf->moveSpeed)])
 		wolf->posY -= wolf->dirY * wolf->moveSpeed;
 }
 
@@ -76,15 +48,26 @@ void	wolf_left(t_wolf *wolf)
     wolf->planeY = wolf->oldPlaneX * sin(wolf->rotSpeed) + wolf->planeY * cos(wolf->rotSpeed);
 }
 
+ void   wolf_no_texture(t_wolf *wolf)
+ {
+    if (wolf->no_texture == FALSE)
+        wolf->no_texture = TRUE;
+    else
+        wolf->no_texture = FALSE;
+
+ }
+
 void	wolf_events(t_wolf *wolf, t_input *in)
 {
 	esdl_update_events(in);
-	if (in->key[SDL_SCANCODE_W])
+	if (in->key[SDL_SCANCODE_W] || in->key[SDL_SCANCODE_UP])
 		wolf_up(wolf);
-	if (in->key[SDL_SCANCODE_S])
+	if (in->key[SDL_SCANCODE_S] || in->key[SDL_SCANCODE_DOWN])
 		wolf_down(wolf);
-	if (in->key[SDL_SCANCODE_D])
+	if (in->key[SDL_SCANCODE_D] || in->key[SDL_SCANCODE_RIGHT])
 		wolf_right(wolf);
-	if (in->key[SDL_SCANCODE_A])
+	if (in->key[SDL_SCANCODE_A] || in->key[SDL_SCANCODE_LEFT])
 		wolf_left(wolf);
+    if (in->key[SDL_SCANCODE_T])
+        wolf_no_texture(wolf);
 }

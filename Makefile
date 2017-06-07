@@ -41,17 +41,18 @@ endif
 PREDIR =	includes
 
 # Sources
-SRC =		esdl/color.c\
-			esdl/events.c\
+SRC =		esdl/events.c\
 			esdl/exit.c\
 			esdl/fps.c\
 			esdl/init.c\
-			esdl/image.c\
 			esdl/pixel.c\
 			esdl/surface.c\
 			wolf_events.c\
 			display_wolf.c\
 			raycasting.c\
+			wolf_map.c\
+			raycasting_util.c\
+			raycasting_floor.c\
 			main.c
 
 OBJ =		$(SRC:.c=.o)
