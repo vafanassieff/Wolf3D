@@ -6,7 +6,7 @@
 /*   By: vafanass <vafanass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/07 13:16:42 by vafanass          #+#    #+#             */
-/*   Updated: 2017/06/07 17:05:13 by vafanass         ###   ########.fr       */
+/*   Updated: 2017/06/08 15:57:33 by vafanass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	fill_map(t_wolf *wolf)
 	outline_map(wolf);
 	maze_map(wolf);
 	
-	int x;
+	/*int x;
 	int	y;
 	x = 0;
 	while (x < 24)
@@ -76,5 +76,5 @@ void	fill_map(t_wolf *wolf)
 		}
 		printf("\n");
 		x++;
-	}
+	}*/
 }

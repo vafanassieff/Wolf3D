@@ -1,6 +1,6 @@
 # Compilation
 CC =		clang
-CFLAGS =	-Wall -Wextra -Werror -g
+CFLAGS =	-Wall -Wextra -Werror -g -flto -O3
 ADDFLAGS =	
 
 # Precompiled header

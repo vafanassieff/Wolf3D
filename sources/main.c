@@ -6,7 +6,7 @@
 /*   By: vafanass <vafanass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 12:17:42 by vafanass          #+#    #+#             */
-/*   Updated: 2017/06/07 17:40:27 by vafanass         ###   ########.fr       */
+/*   Updated: 2017/06/08 16:23:55 by vafanass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,9 @@ static void		loop_hook(t_wolf *wolf)
 		wolf_events(wolf, wolf->esdl->eng.input);
 		wolf_raycasting(wolf);
 		display_wolf(wolf);
+		esdl_fps_limit(wolf->esdl);
+		esdl_fps_counter(wolf->esdl);
+		printf("FPS = %f\n", 1.0 / wolf->frameTime);
     }
 }
 
