@@ -6,7 +6,7 @@
 /*   By: vafanass <vafanass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 12:10:49 by vafanass          #+#    #+#             */
-/*   Updated: 2017/06/07 15:38:40 by vafanass         ###   ########.fr       */
+/*   Updated: 2017/06/09 20:06:19 by vafanass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,11 @@
 # define FALSE			0
 
 
-# define API_NAME		"Wolf 3D"
+# define APP_NAME		"Wolf 3D"
 # define MAX_FPS		60
-# define WIN_W			1280
-# define WIN_H			720
+# define WIN_W			896
+# define WIN_H			504
+
 
 #define mapWidth 		24
 #define mapHeight 		24

@@ -1,5 +1,5 @@
 # Compilation
-CC =		clang
+CC =		gcc
 CFLAGS =	-Wall -Wextra -Werror -g -flto -O3
 ADDFLAGS =	
 
@@ -43,7 +43,6 @@ PREDIR =	includes
 # Sources
 SRC =		esdl/events.c\
 			esdl/exit.c\
-			esdl/fps.c\
 			esdl/init.c\
 			esdl/pixel.c\
 			esdl/surface.c\

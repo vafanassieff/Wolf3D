@@ -6,7 +6,7 @@
 /*   By: vafanass <vafanass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/06 15:32:35 by vafanass          #+#    #+#             */
-/*   Updated: 2017/06/07 17:55:00 by vafanass         ###   ########.fr       */
+/*   Updated: 2017/06/09 19:36:44 by vafanass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,13 +86,12 @@ static void	texture_wall(t_wolf *wolf)
     if(wolf->side == 1 && wolf->rayDirY < 0)
 		wolf->texX = texWidth - wolf->texX - 1;
 	wolf->y = wolf->drawStart;
-	while(wolf->y++ < wolf->drawEnd)
+	while (wolf->y++ < wolf->drawEnd)
       {
         wolf->d = wolf->y * 256 - wolf->h * 128 + wolf->lineheight * 128;
         wolf->texY = ((wolf->d * texHeight) / wolf->lineheight) / 256;
-		wolf->pixel = esdl_read_pixel(wolf->wall_texture[wolf->textnb], wolf->texX, wolf->texY);
-		pixel_to_format(wolf, wolf->wall_texture[wolf->textnb]);
-	   	esdl_put_pixel(wolf->surf, wolf->x, wolf->y, wolf->pixel_put);
+	   	esdl_put_pixel(wolf->surf, wolf->x, wolf->y, 
+		esdl_read_pixel(wolf->wall_texture[wolf->textnb], wolf->texX, wolf->texY));
       }
 }
 

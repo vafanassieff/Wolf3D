@@ -6,7 +6,7 @@
 /*   By: vafanass <vafanass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/05 13:34:03 by vafanass          #+#    #+#             */
-/*   Updated: 2017/06/07 17:40:42 by vafanass         ###   ########.fr       */
+/*   Updated: 2017/06/09 19:24:56 by vafanass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,25 @@
 
 void	display_wolf(t_wolf *wolf)
 {
-	SDL_RenderClear(wolf->esdl->eng.render);
 	SDL_DestroyTexture(wolf->text);
+	SDL_RenderClear(wolf->esdl->eng.render);
 	wolf->text = SDL_CreateTextureFromSurface(wolf->esdl->eng.render, wolf->surf);
 	SDL_RenderCopy(wolf->esdl->eng.render, wolf->text, NULL, wolf->rect);
 	SDL_RenderPresent(wolf->esdl->eng.render);
 	fill_surf(0xFF000000, wolf);
+}
+
+SDL_Surface		*load_texture(char *path, t_wolf *wolf)
+{
+	SDL_Surface		*stock;
+	SDL_Surface		*surface;
+
+	stock = SDL_LoadBMP(path);
+	if (stock == NULL)
+		exit(1);
+	surface = SDL_ConvertSurfaceFormat(stock, wolf->surf->format->format, 0);
+	SDL_FreeSurface(stock);
+	return (surface);
 }
 
 void	fill_surf(int color, t_wolf *wolf)
@@ -34,28 +47,4 @@ void	fill_surf(int color, t_wolf *wolf)
 			esdl_put_pixel(wolf->surf, x, y, color);
 		}
 	}
-}
-
-void	fill_skybox(int color, t_wolf *wolf)
-{
-	int y = -1;
-	int x;
-	while (++y < wolf->rect->h / 2)
-	{
-		x = -1;
-		while (++x < wolf->rect->w)
-		{
-			esdl_put_pixel(wolf->surf, x, y, color);
-		}
-	}
-}
-
-void	pixel_to_format(t_wolf *wolf, SDL_Surface *texture)
-{
-	uint8_t red;
-	uint8_t green;
-	uint8_t blue;
-
-	SDL_GetRGB(wolf->pixel, texture->format, &blue ,&green ,&red);
-	wolf->pixel_put = 255 << 24 | red << 16 | green << 8 | blue << 0;
 }

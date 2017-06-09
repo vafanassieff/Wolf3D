@@ -6,7 +6,7 @@
 /*   By: vafanass <vafanass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 12:06:18 by vafanass          #+#    #+#             */
-/*   Updated: 2017/06/07 17:50:11 by vafanass         ###   ########.fr       */
+/*   Updated: 2017/06/09 20:00:30 by vafanass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,13 @@
 typedef	struct		s_wolf
 {
 	t_esdl			*esdl;
-	SDL_Surface		*surf;
 	SDL_Rect		*rect;
 	SDL_Texture		*text;
+	SDL_Surface		*surf;
 	SDL_Surface		**wall_texture;
 	SDL_Surface		*floor_texture;
 	SDL_Surface		*ceiling_texture;
-	uint32_t 		pixel;
-	uint32_t 		pixel_put;
+	SDL_Surface		*icon;
 	int				map[24][24];
 	int				render;
 	int				w;
@@ -83,19 +82,17 @@ typedef	struct		s_wolf
 	double 			weight;
 	double 			currentFloorX;
 	double 			currentFloorY;
-	BOOL			no_texture;
 }					t_wolf;
 
 void				wolf_events(t_wolf *wolf, t_input *in);
 void				display_wolf(t_wolf *wolf);
 void 				draw_line(int x, t_wolf *wolf);
 void				fill_surf(int color, t_wolf *wolf);
-void				fill_skybox(int color, t_wolf *wolf);
 void				fill_floor(int color, t_wolf *wolf);
 void				wolf_raycasting(t_wolf *wolf);
-void				pixel_to_format(t_wolf *wolf, SDL_Surface *texture);
 void				fill_map(t_wolf *wolf);
 void				wolf_speed(t_wolf *wolf);
 void				texture_floor(t_wolf *wolf);
+SDL_Surface			*load_texture(char *path, t_wolf *wolf);
 
 #endif
