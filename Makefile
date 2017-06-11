@@ -46,12 +46,14 @@ SRC =		esdl/events.c\
 			esdl/init.c\
 			esdl/pixel.c\
 			esdl/surface.c\
-			wolf_events.c\
-			display_wolf.c\
 			raycasting.c\
-			wolf_map.c\
 			raycasting_util.c\
 			raycasting_floor.c\
+			wolf_map.c\
+			wolf_init.c\
+			wolf_weapon.c\
+			wolf_events.c\
+			wolf_display.c\
 			main.c
 
 OBJ =		$(SRC:.c=.o)

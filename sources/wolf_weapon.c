@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   global.h                                           :+:      :+:    :+:   */
+/*   wolf_weapon.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vafanass <vafanass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/19 12:10:49 by vafanass          #+#    #+#             */
-/*   Updated: 2017/06/11 19:50:13 by vafanass         ###   ########.fr       */
+/*   Created: 2017/06/11 19:55:28 by vafanass          #+#    #+#             */
+/*   Updated: 2017/06/11 19:56:23 by vafanass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _GLOBAL_H
-# define _GLOBAL_H
+#include "wolf3d.h"
 
-# define UCHAR			unsigned char
-# define UINT			unsigned int
-# define BOOL			int
-# define TRUE			1
-# define FALSE			0
-
-
-# define APP_NAME		"Wolf 3D"
-# define MAX_FPS		60
-# define WIN_W			896
-# define WIN_H			504
-
-# define COLOR_CYAN     0xFFFFFF00
-
-#define mapWidth 		24
-#define mapHeight 		24
-#define texWidth 		64
-#define texHeight 		64
-#define NB_TEXTURE		8
-
-#endif
+void    display_weapon(t_wolf *wolf)
+{
+    int x;
+	int y;
+	
+	x = 0;
+	while (++x < wolf->weapon->w)
+	{
+		y = 0;
+		while (++y < wolf->weapon->h)
+		{
+			if (esdl_read_pixel(wolf->weapon ,x, y) != COLOR_CYAN)
+				esdl_put_pixel(wolf->surf, x, y, esdl_read_pixel(wolf->weapon ,x, y));
+		}
+	}
+}

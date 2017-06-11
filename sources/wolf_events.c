@@ -6,7 +6,7 @@
 /*   By: vafanass <vafanass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/05 13:23:21 by vafanass          #+#    #+#             */
-/*   Updated: 2017/06/09 19:33:22 by vafanass         ###   ########.fr       */
+/*   Updated: 2017/06/11 18:38:43 by vafanass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,11 @@ void	wolf_left(t_wolf *wolf)
     wolf->planeY = wolf->oldPlaneX * sin(wolf->rotSpeed) + wolf->planeY * cos(wolf->rotSpeed);
 }
 
+void	wolf_left_shift(t_wolf *wolf)
+{
+	wolf->speedm = 1;
+}
+
 void	wolf_events(t_wolf *wolf, t_input *in)
 {
 	esdl_update_events(in);
@@ -59,4 +64,6 @@ void	wolf_events(t_wolf *wolf, t_input *in)
 		wolf_right(wolf);
 	if (in->key[SDL_SCANCODE_A] || in->key[SDL_SCANCODE_LEFT])
 		wolf_left(wolf);
+	if(in->key[SDL_SCANCODE_LSHIFT])
+		wolf_left_shift(wolf);
 }

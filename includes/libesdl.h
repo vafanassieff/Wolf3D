@@ -6,7 +6,7 @@
 /*   By: vafanass <vafanass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 10:14:03 by vafanass          #+#    #+#             */
-/*   Updated: 2017/06/09 19:48:49 by vafanass         ###   ########.fr       */
+/*   Updated: 2017/06/11 19:37:58 by vafanass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ typedef	struct	s_esdl
 
 int				esdl_init(t_esdl *esdl, const int rx, const int ry, char *name);
 SDL_Surface		*esdl_create_surface(int width, int height);
+void			remove_color_from_surface(SDL_Surface *surface, uint32_t color);
+void			fill_surface(SDL_Surface *surface, uint32_t color);
 
 void			esdl_update_events(t_input *in);
 int				esdl_check_input(t_input *in, const int input);

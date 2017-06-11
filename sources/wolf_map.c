@@ -6,13 +6,13 @@
 /*   By: vafanass <vafanass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/07 13:16:42 by vafanass          #+#    #+#             */
-/*   Updated: 2017/06/08 15:57:33 by vafanass         ###   ########.fr       */
+/*   Updated: 2017/06/11 18:47:08 by vafanass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-void	outline_map(t_wolf *wolf)
+static void	outline_map(t_wolf *wolf)
 {
 	int	i;
 	i = 0;
@@ -32,7 +32,7 @@ void	outline_map(t_wolf *wolf)
 	}
 }
 
-void	maze_map(t_wolf *wolf)
+static void	maze_map(t_wolf *wolf)
 {
 	int i;
 	i = 2;

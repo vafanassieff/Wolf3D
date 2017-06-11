@@ -6,7 +6,7 @@
 /*   By: vafanass <vafanass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 14:47:31 by vafanass          #+#    #+#             */
-/*   Updated: 2017/06/09 19:43:12 by vafanass         ###   ########.fr       */
+/*   Updated: 2017/06/11 17:42:18 by vafanass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void				esdl_update_events(t_input *in)
 	SDL_GetRelativeMouseState(&in->m_r_x, &in->m_r_y);
 	while (SDL_PollEvent(&event))
 	{
-		if (event.type == SDL_QUIT || esdl_check_input(in, SDL_SCANCODE_ESCAPE))
+		if (event.type == SDL_QUIT || event.key.keysym.scancode == SDL_SCANCODE_ESCAPE)
 			in->quit = 1;
 		if ((ret += esdl_get_input(&event, in)) > 0)
 			break ;

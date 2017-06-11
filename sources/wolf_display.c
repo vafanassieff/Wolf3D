@@ -6,7 +6,7 @@
 /*   By: vafanass <vafanass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/05 13:34:03 by vafanass          #+#    #+#             */
-/*   Updated: 2017/06/09 19:24:56 by vafanass         ###   ########.fr       */
+/*   Updated: 2017/06/11 19:54:26 by vafanass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	display_wolf(t_wolf *wolf)
 	wolf->text = SDL_CreateTextureFromSurface(wolf->esdl->eng.render, wolf->surf);
 	SDL_RenderCopy(wolf->esdl->eng.render, wolf->text, NULL, wolf->rect);
 	SDL_RenderPresent(wolf->esdl->eng.render);
-	fill_surf(0xFF000000, wolf);
+	fill_surface(wolf->surf, 0xFFFFFF00);
 }
 
 SDL_Surface		*load_texture(char *path, t_wolf *wolf)
@@ -35,16 +35,3 @@ SDL_Surface		*load_texture(char *path, t_wolf *wolf)
 	return (surface);
 }
 
-void	fill_surf(int color, t_wolf *wolf)
-{
-	int y = -1;
-	int x;
-	while (++y < wolf->rect->h)
-	{
-		x = -1;
-		while (++x < wolf->rect->w)
-		{
-			esdl_put_pixel(wolf->surf, x, y, color);
-		}
-	}
-}
