@@ -6,7 +6,7 @@
 /*   By: vafanass <vafanass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/06 15:32:35 by vafanass          #+#    #+#             */
-/*   Updated: 2017/06/09 19:36:44 by vafanass         ###   ########.fr       */
+/*   Updated: 2017/06/12 14:44:18 by vafanass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,25 @@
 
 static void find_step(t_wolf *wolf)
 {
-	if (wolf->rayDirX < 0)
+	if (wolf->raydirx < 0)
 		{
-			wolf->stepX = -1;
-			wolf->sideDistX = (wolf->rayPosX - wolf->mapX) * wolf->deltaDistX;
+			wolf->stepx = -1;
+			wolf->sidedistx = (wolf->rayposx - wolf->mapx) * wolf->deltadistx;
 		}
 		else
 		{
-			wolf->stepX = 1;
-			wolf->sideDistX = (wolf->mapX + 1.0 - wolf->rayPosX) * wolf->deltaDistX;
+			wolf->stepx = 1;
+			wolf->sidedistx = (wolf->mapx + 1.0 - wolf->rayposx) * wolf->deltadistx;
 		}
-		if (wolf->rayDirY < 0)
+		if (wolf->raydiry < 0)
 		{
-			wolf->stepY = -1;
-			wolf->sideDistY = (wolf->rayPosY - wolf->mapY) * wolf->deltaDistY;
+			wolf->stepy = -1;
+			wolf->sidedisty = (wolf->rayposy - wolf->mapy) * wolf->deltadisty;
 		}
 		else
 		{
-			wolf->stepY = 1;
-			wolf->sideDistY = (wolf->mapY + 1.0 - wolf->rayPosY) * wolf->deltaDistY;
+			wolf->stepy = 1;
+			wolf->sidedisty = (wolf->mapy + 1.0 - wolf->rayposy) * wolf->deltadisty;
 		}
 }
 
@@ -40,58 +40,58 @@ static void	dda(t_wolf *wolf)
 {
 	while (wolf->hit == 0)
 	{
-		if (wolf->sideDistX < wolf->sideDistY)
+		if (wolf->sidedistx < wolf->sidedisty)
 		{
-			wolf->sideDistX += wolf->deltaDistX;
-			wolf->mapX += wolf->stepX;
+			wolf->sidedistx += wolf->deltadistx;
+			wolf->mapx += wolf->stepx;
 			wolf->side = 0;
 		}
 		else
 		{
-			wolf->sideDistY += wolf->deltaDistY;
-			wolf->mapY += wolf->stepY;
+			wolf->sidedisty += wolf->deltadisty;
+			wolf->mapy += wolf->stepy;
 			wolf->side = 1;
 		}
-		if (wolf->map[wolf->mapX][wolf->mapY] > 0)
+		if (wolf->map[wolf->mapx][wolf->mapy] > 0)
 			wolf->hit = 1;
 	}
 }
 
 static void	init_raycasting(t_wolf *wolf)
 {
-		wolf->cameraX = 2 * wolf->x / (double)wolf->w - 1.0;
-		wolf->rayPosX = wolf->posX;
-		wolf->rayPosY = wolf->posY;
-		wolf->rayDirX = wolf->dirX + wolf->planeX * wolf->cameraX;
-		wolf->rayDirY = wolf->dirY + wolf->planeY * wolf->cameraX;
-		wolf->mapX = (int)wolf->rayPosX;
-		wolf->mapY = (int)wolf->rayPosY;
-		wolf->deltaDistX = sqrt(1 + (wolf->rayDirY * wolf->rayDirY) / (wolf->rayDirX * wolf->rayDirX));
-		wolf->deltaDistY = sqrt(1 + (wolf->rayDirX * wolf->rayDirX) / (wolf->rayDirY * wolf->rayDirY));
+		wolf->camerax = 2 * wolf->x / (double)wolf->w - 1.0;
+		wolf->rayposx = wolf->posx;
+		wolf->rayposy = wolf->posy;
+		wolf->raydirx = wolf->dirx + wolf->planex * wolf->camerax;
+		wolf->raydiry = wolf->diry + wolf->planey * wolf->camerax;
+		wolf->mapx = (int)wolf->rayposx;
+		wolf->mapy = (int)wolf->rayposy;
+		wolf->deltadistx = sqrt(1 + (wolf->raydiry * wolf->raydiry) / (wolf->raydirx * wolf->raydirx));
+		wolf->deltadisty = sqrt(1 + (wolf->raydirx * wolf->raydirx) / (wolf->raydiry * wolf->raydiry));
 		wolf->hit = 0;
 }
 
 
 static void	texture_wall(t_wolf *wolf)
 {
-	wolf->textnb = wolf->map[wolf->mapX][wolf->mapY] - 1;
+	wolf->textnb = wolf->map[wolf->mapx][wolf->mapy] - 1;
 	if (wolf->side == 0) 
-		wolf->wallX = wolf->rayPosY + wolf->perpWallDist * wolf->rayDirY;
+		wolf->wallx = wolf->rayposy + wolf->walldist * wolf->raydiry;
 	else
-		wolf->wallX = wolf->rayPosX + wolf->perpWallDist * wolf->rayDirX;
-    wolf->wallX -= floor((wolf->wallX));
-    wolf->texX = (int)(wolf->wallX * (double)texWidth);
-    if(wolf->side == 0 && wolf->rayDirX > 0)
-		  wolf->texX = texWidth - wolf->texX - 1;
-    if(wolf->side == 1 && wolf->rayDirY < 0)
-		wolf->texX = texWidth - wolf->texX - 1;
-	wolf->y = wolf->drawStart;
-	while (wolf->y++ < wolf->drawEnd)
+		wolf->wallx = wolf->rayposx + wolf->walldist * wolf->raydirx;
+    wolf->wallx -= floor((wolf->wallx));
+    wolf->texx = (int)(wolf->wallx * (double)texWidth);
+    if(wolf->side == 0 && wolf->raydirx > 0)
+		  wolf->texx = texWidth - wolf->texx - 1;
+    if(wolf->side == 1 && wolf->raydiry < 0)
+		wolf->texx = texWidth - wolf->texx - 1;
+	wolf->y = wolf->drawstart;
+	while (wolf->y++ < wolf->drawend)
       {
         wolf->d = wolf->y * 256 - wolf->h * 128 + wolf->lineheight * 128;
-        wolf->texY = ((wolf->d * texHeight) / wolf->lineheight) / 256;
+        wolf->texy = ((wolf->d * texHeight) / wolf->lineheight) / 256;
 	   	esdl_put_pixel(wolf->surf, wolf->x, wolf->y, 
-		esdl_read_pixel(wolf->wall_texture[wolf->textnb], wolf->texX, wolf->texY));
+		esdl_read_pixel(wolf->wall_texture[wolf->textnb], wolf->texx, wolf->texy));
       }
 }
 
@@ -104,16 +104,16 @@ void	wolf_raycasting(t_wolf *wolf)
 		find_step(wolf);
 		dda(wolf);
 		if (wolf->side == 0)
-			wolf->perpWallDist = (wolf->mapX - wolf->rayPosX + (1 - wolf->stepX) / 2) / wolf->rayDirX;
+			wolf->walldist = (wolf->mapx - wolf->rayposx + (1 - wolf->stepx) / 2) / wolf->raydirx;
 		else
-			wolf->perpWallDist = (wolf->mapY - wolf->rayPosY + (1 - wolf->stepY) / 2) / wolf->rayDirY;
-		wolf->lineheight = (int)(wolf->h / wolf->perpWallDist);
-		wolf->drawStart = -wolf->lineheight / 2 + wolf->h / 2;
-		if (wolf->drawStart < 0)
-			wolf->drawStart = 0;
-		wolf->drawEnd = wolf->lineheight / 2 + wolf->h / 2;
-		if (wolf->drawEnd >= wolf->h)
-			wolf->drawEnd = wolf->h - 1;
+			wolf->walldist = (wolf->mapy - wolf->rayposy + (1 - wolf->stepy) / 2) / wolf->raydiry;
+		wolf->lineheight = (int)(wolf->h / wolf->walldist);
+		wolf->drawstart = -wolf->lineheight / 2 + wolf->h / 2;
+		if (wolf->drawstart < 0)
+			wolf->drawstart = 0;
+		wolf->drawend = wolf->lineheight / 2 + wolf->h / 2;
+		if (wolf->drawend >= wolf->h)
+			wolf->drawend = wolf->h - 1;
 		texture_wall(wolf);
 		texture_floor(wolf);
 	}

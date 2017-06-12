@@ -6,7 +6,7 @@
 /*   By: vafanass <vafanass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/05 13:23:21 by vafanass          #+#    #+#             */
-/*   Updated: 2017/06/11 18:38:43 by vafanass         ###   ########.fr       */
+/*   Updated: 2017/06/12 14:44:17 by vafanass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,38 +14,38 @@
 
 void	wolf_up(t_wolf *wolf)
 {
-	if (!wolf->map[(int)(wolf->posX + wolf->dirX * wolf->moveSpeed)][(int)wolf->posY])
-		wolf->posX += wolf->dirX * wolf->moveSpeed;
-	if (!wolf->map[(int)wolf->posX][(int)(wolf->posY + wolf->dirY * wolf->moveSpeed)])
-		wolf->posY += wolf->dirY * wolf->moveSpeed;
+	if (!wolf->map[(int)(wolf->posx + wolf->dirx * wolf->movespeed)][(int)wolf->posy])
+		wolf->posx += wolf->dirx * wolf->movespeed;
+	if (!wolf->map[(int)wolf->posx][(int)(wolf->posy + wolf->diry * wolf->movespeed)])
+		wolf->posy += wolf->diry * wolf->movespeed;
 }
 
 void	wolf_down(t_wolf *wolf)
 {
-	if (!wolf->map[(int)(wolf->posX - wolf->dirX * wolf->moveSpeed)][(int)wolf->posY])
-		wolf->posX -= wolf->dirX * wolf->moveSpeed;
-	if (!wolf->map[(int)wolf->posX][(int)(wolf->posY - wolf->dirY * wolf->moveSpeed)])
-		wolf->posY -= wolf->dirY * wolf->moveSpeed;
+	if (!wolf->map[(int)(wolf->posx - wolf->dirx * wolf->movespeed)][(int)wolf->posy])
+		wolf->posx -= wolf->dirx * wolf->movespeed;
+	if (!wolf->map[(int)wolf->posx][(int)(wolf->posy - wolf->diry * wolf->movespeed)])
+		wolf->posy -= wolf->diry * wolf->movespeed;
 }
 
 void	wolf_right(t_wolf *wolf)
 {
-	wolf->oldDirX = wolf->dirX;
-    wolf->dirX = wolf->dirX * cos(-wolf->rotSpeed) - wolf->dirY * sin(-wolf->rotSpeed);
-    wolf->dirY = wolf->oldDirX * sin(-wolf->rotSpeed) + wolf->dirY * cos(-wolf->rotSpeed);
-    wolf->oldPlaneX = wolf->planeX;
-    wolf->planeX = wolf->planeX * cos(-wolf->rotSpeed) - wolf->planeY * sin(-wolf->rotSpeed);
-    wolf->planeY = wolf->oldPlaneX * sin(-wolf->rotSpeed) + wolf->planeY * cos(-wolf->rotSpeed);
+	wolf->olddirx = wolf->dirx;
+    wolf->dirx = wolf->dirx * cos(-wolf->rotspeed) - wolf->diry * sin(-wolf->rotspeed);
+    wolf->diry = wolf->olddirx * sin(-wolf->rotspeed) + wolf->diry * cos(-wolf->rotspeed);
+    wolf->oldplanex = wolf->planex;
+    wolf->planex = wolf->planex * cos(-wolf->rotspeed) - wolf->planey * sin(-wolf->rotspeed);
+    wolf->planey = wolf->oldplanex * sin(-wolf->rotspeed) + wolf->planey * cos(-wolf->rotspeed);
 }
 
 void	wolf_left(t_wolf *wolf)
 {
-	wolf->oldDirX = wolf->dirX;
-    wolf->dirX = wolf->dirX * cos(wolf->rotSpeed) - wolf->dirY * sin(wolf->rotSpeed);
-    wolf->dirY = wolf->oldDirX * sin(wolf->rotSpeed) + wolf->dirY * cos(wolf->rotSpeed);
-    wolf->oldPlaneX = wolf->planeX;
-    wolf->planeX = wolf->planeX * cos(wolf->rotSpeed) - wolf->planeY * sin(wolf->rotSpeed);
-    wolf->planeY = wolf->oldPlaneX * sin(wolf->rotSpeed) + wolf->planeY * cos(wolf->rotSpeed);
+	wolf->olddirx = wolf->dirx;
+    wolf->dirx = wolf->dirx * cos(wolf->rotspeed) - wolf->diry * sin(wolf->rotspeed);
+    wolf->diry = wolf->olddirx * sin(wolf->rotspeed) + wolf->diry * cos(wolf->rotspeed);
+    wolf->oldplanex = wolf->planex;
+    wolf->planex = wolf->planex * cos(wolf->rotspeed) - wolf->planey * sin(wolf->rotspeed);
+    wolf->planey = wolf->oldplanex * sin(wolf->rotspeed) + wolf->planey * cos(wolf->rotspeed);
 }
 
 void	wolf_left_shift(t_wolf *wolf)

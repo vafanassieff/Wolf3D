@@ -6,7 +6,7 @@
 /*   By: vafanass <vafanass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 12:06:18 by vafanass          #+#    #+#             */
-/*   Updated: 2017/06/11 19:57:06 by vafanass         ###   ########.fr       */
+/*   Updated: 2017/06/12 14:44:15 by vafanass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,61 +29,61 @@ typedef	struct		s_wolf
 	SDL_Surface		*ceiling_texture;
 	SDL_Surface		*icon;
 	SDL_Surface		*weapon;
-	int				speedm;
 	int				map[24][24];
-	int				render;
-	int				w;
-	int				h;
-	int				mapX;
-	int				mapY;
-	int				stepX;
-	int				stepY;
-	int				hit;
-	int				side;
-	int				lineheight;
-	int				drawStart;
-	int				drawEnd;
-	int				color;
-	int 			texX;
-	int 			texY;
-	int				textnb;
 	int				x;
 	int				y;
 	int				d;
-	int				floorTexX;
-	int				floorTexY;
+	int				w;
+	int				h;
+	int				speedm;
+	int				render;
+	int				mapx;
+	int				mapy;
+	int				stepx;
+	int				stepy;
+	int				hit;
+	int				side;
+	int				lineheight;
+	int				drawstart;
+	int				drawend;
+	int				color;
+	int 			texx;
+	int 			texy;
+	int				textnb;
+	int				floortexx;
+	int				floortexy;
 	double			time;
 	double			oldtime;
-	double			posX;
-	double			posY;
-	double			dirX;
-	double			dirY;
-	double			planeX;
-	double			planeY;
-	double			cameraX;
-	double			rayPosX;
-	double			rayPosY;
-	double			rayDirX;
-	double			rayDirY;
-	double			sideDistX;
-	double			sideDistY;
-	double			deltaDistX;
-	double			deltaDistY;
-	double			perpWallDist;
-	double			moveSpeed;
-	double			rotSpeed;
-	double			frameTime;
-	double 			oldDirX;
-	double 			oldPlaneX;
-	double 			wallX;
-	double 			floorXWall;
-	double			floorYWall;
-	double 			distWall;
-	double			distPlayer;
-	double			currentDist;
+	double			posx;
+	double			posy;
+	double			dirx;
+	double			diry;
+	double			planex;
+	double			planey;
+	double			camerax;
+	double			rayposx;
+	double			rayposy;
+	double			raydirx;
+	double			raydiry;
+	double			sidedistx;
+	double			sidedisty;
+	double			deltadistx;
+	double			deltadisty;
+	double			walldist;
+	double			movespeed;
+	double			rotspeed;
+	double			frametime;
+	double 			olddirx;
+	double 			oldplanex;
+	double 			wallx;
+	double 			floorxwall;
+	double			floorywall;
+	double 			distfromwall;
+	double			distplayer;
+	double			currentdist;
 	double 			weight;
-	double 			currentFloorX;
-	double 			currentFloorY;
+	double 			currentfloorx;
+	double 			currentfloory;
 }					t_wolf;
 
 void				wolf_events(t_wolf *wolf, t_input *in);
