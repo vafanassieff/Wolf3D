@@ -6,7 +6,7 @@
 /*   By: vafanass <vafanass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 12:17:42 by vafanass          #+#    #+#             */
-/*   Updated: 2017/06/12 14:44:15 by vafanass         ###   ########.fr       */
+/*   Updated: 2017/06/12 16:36:47 by vafanass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int 			main(void)
 	init_wolf(wolf);
 	fill_map(wolf);
 	init_texture(wolf);
-	SDL_SetWindowIcon(wolf->esdl->eng.win, wolf->icon);
 	loop_hook(wolf);
 	esdl_exit(wolf->esdl);
 	return(0);

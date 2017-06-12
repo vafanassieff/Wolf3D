@@ -6,7 +6,7 @@
 /*   By: vafanass <vafanass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 12:06:18 by vafanass          #+#    #+#             */
-/*   Updated: 2017/06/12 14:48:04 by vafanass         ###   ########.fr       */
+/*   Updated: 2017/06/12 16:34:06 by vafanass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@ typedef	struct		s_wolf
 	SDL_Surface		*ceiling_texture;
 	SDL_Surface		*icon;
 	SDL_Surface		*weapon;
+	uint32_t		time;
+	uint32_t		oldtime;
+	uint32_t		fpstime;
 	int				map[24][24];
 	int				x;
 	int				y;
@@ -52,8 +55,6 @@ typedef	struct		s_wolf
 	int				textnb;
 	int				floortexx;
 	int				floortexy;
-	double			time;
-	double			oldtime;
 	double			posx;
 	double			posy;
 	double			dirx;
