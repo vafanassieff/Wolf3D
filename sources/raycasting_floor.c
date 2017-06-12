@@ -6,7 +6,7 @@
 /*   By: vafanass <vafanass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/07 17:35:50 by vafanass          #+#    #+#             */
-/*   Updated: 2017/06/12 14:44:18 by vafanass         ###   ########.fr       */
+/*   Updated: 2017/06/12 14:51:27 by vafanass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ void	texture_floor(t_wolf *wolf)
         wolf->weight = (wolf->currentdist -  wolf->distplayer) / ( wolf->distfromwall -  wolf->distplayer);
         wolf->currentfloorx = wolf->weight *  wolf->floorxwall + (1.0 - wolf->weight) *  wolf->posx;
         wolf->currentfloory = wolf->weight *  wolf->floorywall + (1.0 - wolf->weight) *  wolf->posy;
-        wolf->floortexx = (int)(wolf->currentfloorx * texWidth) % texWidth;
-       	wolf->floortexy = (int)(wolf->currentfloory * texHeight) % texHeight;
+        wolf->floortexx = (int)(wolf->currentfloorx * TEXT_WIDTH) % TEXT_WIDTH;
+       	wolf->floortexy = (int)(wolf->currentfloory * TEXT_HEIGHT) % TEXT_HEIGHT;
 	    esdl_put_pixel(wolf->surf, wolf->x, wolf->y,
         esdl_read_pixel(wolf->floor_texture,wolf->floortexx, wolf->floortexy));
 	   	esdl_put_pixel(wolf->surf, wolf->x, wolf->h - wolf->y,

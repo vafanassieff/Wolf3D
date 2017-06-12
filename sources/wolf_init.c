@@ -6,7 +6,7 @@
 /*   By: vafanass <vafanass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/11 18:41:47 by vafanass          #+#    #+#             */
-/*   Updated: 2017/06/12 14:38:32 by vafanass         ###   ########.fr       */
+/*   Updated: 2017/06/12 14:48:31 by vafanass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void		init_texture(t_wolf *wolf)
 {
 	wolf->wall_texture = malloc(sizeof(SDL_Surface) * NB_TEXTURE);
-	wolf->wall_texture[0] = load_texture("./ressources/texture/BluegreyL.bmp", wolf);
+	wolf->wall_texture[0] = load_texture(TEXT_BLUE_EAGLE, wolf);
 	wolf->wall_texture[1] = load_texture("./ressources/texture/BluegreyeagleL.bmp", wolf);
 	wolf->wall_texture[2] = load_texture("./ressources/texture/GreybrickworkersL.bmp", wolf);
 	wolf->wall_texture[3] = load_texture("./ressources/texture/SteelwallswitchoffL.bmp", wolf);

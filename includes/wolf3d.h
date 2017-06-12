@@ -6,7 +6,7 @@
 /*   By: vafanass <vafanass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 12:06:18 by vafanass          #+#    #+#             */
-/*   Updated: 2017/06/12 14:44:15 by vafanass         ###   ########.fr       */
+/*   Updated: 2017/06/12 14:48:04 by vafanass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ typedef	struct		s_wolf
 	double 			currentfloory;
 }					t_wolf;
 
+SDL_Surface			*load_texture(char *path, t_wolf *wolf);
 void				wolf_events(t_wolf *wolf, t_input *in);
 void				display_wolf(t_wolf *wolf);
 void				fill_surf(int color, t_wolf *wolf);
@@ -93,7 +94,6 @@ void				wolf_raycasting(t_wolf *wolf);
 void				fill_map(t_wolf *wolf);
 void				wolf_speed(t_wolf *wolf);
 void				texture_floor(t_wolf *wolf);
-SDL_Surface			*load_texture(char *path, t_wolf *wolf);
 void 				init_wolf(t_wolf *wolf);
 void				init_texture(t_wolf *wolf);
 void    			display_weapon(t_wolf *wolf);

@@ -6,7 +6,7 @@
 /*   By: vafanass <vafanass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/06 15:32:35 by vafanass          #+#    #+#             */
-/*   Updated: 2017/06/12 14:44:18 by vafanass         ###   ########.fr       */
+/*   Updated: 2017/06/12 14:51:24 by vafanass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,16 +80,16 @@ static void	texture_wall(t_wolf *wolf)
 	else
 		wolf->wallx = wolf->rayposx + wolf->walldist * wolf->raydirx;
     wolf->wallx -= floor((wolf->wallx));
-    wolf->texx = (int)(wolf->wallx * (double)texWidth);
+    wolf->texx = (int)(wolf->wallx * (double)TEXT_WIDTH);
     if(wolf->side == 0 && wolf->raydirx > 0)
-		  wolf->texx = texWidth - wolf->texx - 1;
+		  wolf->texx = TEXT_WIDTH- wolf->texx - 1;
     if(wolf->side == 1 && wolf->raydiry < 0)
-		wolf->texx = texWidth - wolf->texx - 1;
+		wolf->texx = TEXT_WIDTH- wolf->texx - 1;
 	wolf->y = wolf->drawstart;
 	while (wolf->y++ < wolf->drawend)
       {
         wolf->d = wolf->y * 256 - wolf->h * 128 + wolf->lineheight * 128;
-        wolf->texy = ((wolf->d * texHeight) / wolf->lineheight) / 256;
+        wolf->texy = ((wolf->d * TEXT_HEIGHT) / wolf->lineheight) / 256;
 	   	esdl_put_pixel(wolf->surf, wolf->x, wolf->y, 
 		esdl_read_pixel(wolf->wall_texture[wolf->textnb], wolf->texx, wolf->texy));
       }
