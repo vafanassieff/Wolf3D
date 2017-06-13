@@ -6,7 +6,7 @@
 /*   By: vafanass <vafanass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 10:14:03 by vafanass          #+#    #+#             */
-/*   Updated: 2017/06/11 19:37:58 by vafanass         ###   ########.fr       */
+/*   Updated: 2017/06/13 11:28:48 by vafanass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,14 @@
 
 # include <SDL.h>
 
-typedef struct	s_text
+typedef struct s_timer
 {
-	SDL_Texture		*text;
-	SDL_Rect		rect;
-}				t_text;
+  int 	fps;
+  int 	current;
+  int 	update;
+  int 	limit;
+  UINT 	framelimit;
+} t_timer;
 
 typedef struct	s_input
 {
@@ -47,6 +50,7 @@ typedef	struct	s_esdl
 {
 	t_engine		eng;
 	int				run;
+	t_timer fps;
 }				t_esdl;
 
 /*
@@ -64,6 +68,8 @@ int				esdl_check_input(t_input *in, const int input);
 void			esdl_put_pixel(SDL_Surface *surf, const int x, const int y,
 				const int color);
 Uint32			esdl_read_pixel(SDL_Surface *surf, const int x, const int y);
+
+void esdl_fps_limit(t_esdl *esdl);
 
 void			esdl_exit(t_esdl *esdl);
 

@@ -46,6 +46,7 @@ SRC =		esdl/events.c\
 			esdl/init.c\
 			esdl/pixel.c\
 			esdl/surface.c\
+			esdl/fps.c\
 			raycasting.c\
 			raycasting_util.c\
 			raycasting_floor.c\

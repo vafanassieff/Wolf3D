@@ -6,7 +6,7 @@
 /*   By: vafanass <vafanass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 12:10:49 by vafanass          #+#    #+#             */
-/*   Updated: 2017/06/12 16:27:02 by vafanass         ###   ########.fr       */
+/*   Updated: 2017/06/13 11:58:55 by vafanass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # define APP_NAME			"Wolf 3D"
 # define WIN_W				896
 # define WIN_H				504
+# define MAX_FPS            60
 
 # define COLOR_CYAN     	0xFFFFFF00
 
@@ -40,5 +41,6 @@
 # define TEXT_WIDTH			64
 # define TEXT_HEIGHT 		64
 # define NB_TEXTURE			8
+# define ANIME_SHOTGUN      6
 
 #endif

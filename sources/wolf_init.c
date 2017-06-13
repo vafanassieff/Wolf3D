@@ -6,7 +6,7 @@
 /*   By: vafanass <vafanass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/11 18:41:47 by vafanass          #+#    #+#             */
-/*   Updated: 2017/06/12 16:21:58 by vafanass         ###   ########.fr       */
+/*   Updated: 2017/06/13 12:05:51 by vafanass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,13 @@ void		init_texture(t_wolf *wolf)
 	wolf->floor_texture = load_texture(TEXT_FLOOR, wolf);
 	wolf->ceiling_texture = load_texture(TEXT_CEILING, wolf);
 	wolf->icon = load_texture(TEXT_ICON, wolf);
-    wolf->weapon = load_texture(TEXT_SHOTGUN, wolf);
+    wolf->weapon = malloc(sizeof(SDL_Surface) * 7);
+    wolf->weapon[0] = load_texture("./ressources/sprite/shotgun0.bmp", wolf);
+    wolf->weapon[1] = load_texture("./ressources/sprite/shotgun1.bmp", wolf);
+    wolf->weapon[2] = load_texture("./ressources/sprite/shotgun2.bmp", wolf);
+    wolf->weapon[3] = load_texture("./ressources/sprite/shotgun3.bmp", wolf);
+    wolf->weapon[4] = load_texture("./ressources/sprite/shotgun4.bmp", wolf);
+    wolf->weapon[5] = load_texture("./ressources/sprite/shotgun5.bmp", wolf);
 	SDL_SetWindowIcon(wolf->esdl->eng.win, wolf->icon);
 }
 
@@ -55,4 +61,7 @@ void 	init_wolf(t_wolf *wolf)
 	wolf->planey = 0.90;
 	wolf->speedm = 0;
 	wolf->esdl->eng.input->quit = 0;
+    wolf->esdl->fps.limit = MAX_FPS;
+	wolf->frame_number = 0;
+	wolf->fire = 0;
 }

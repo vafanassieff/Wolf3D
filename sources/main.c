@@ -6,7 +6,7 @@
 /*   By: vafanass <vafanass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 12:17:42 by vafanass          #+#    #+#             */
-/*   Updated: 2017/06/12 16:36:47 by vafanass         ###   ########.fr       */
+/*   Updated: 2017/06/13 12:21:51 by vafanass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ static void		loop_hook(t_wolf *wolf)
 		wolf_raycasting(wolf);
 		display_weapon(wolf);
 		display_wolf(wolf);
-		SDL_SetWindowTitle(wolf->esdl->eng.win, ft_itoa(1.0 / wolf->frametime));
+		esdl_fps_limit(wolf->esdl);
+		wolf->frame_number++;
     }
 }
 
