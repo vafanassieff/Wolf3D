@@ -6,7 +6,7 @@
 /*   By: vafanass <vafanass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/11 19:55:28 by vafanass          #+#    #+#             */
-/*   Updated: 2017/06/13 12:33:10 by vafanass         ###   ########.fr       */
+/*   Updated: 2017/06/13 12:51:15 by vafanass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,10 @@ void    weapon_anim(t_wolf *wolf, int nb)
 void    weapon_choice(t_wolf *wolf)
 {
     static int nb;
-    static int old_frame;
-
-    if ((uint32_t)old_frame == wolf->frame_number - 1)
-    {
+    
     if (nb > 50 || nb < 0)
         nb = 0;
-    else if (nb <= 7 && nb >= 0)
+    if (nb <= 7 && nb > 0)
         weapon_anim(wolf, 1);
     else if (nb <= 14 && nb >= 7)
         weapon_anim(wolf, 2);
@@ -54,10 +51,13 @@ void    weapon_choice(t_wolf *wolf)
     else if (nb <= 49 && nb >= 42)
         weapon_anim(wolf, 3);
     else if (nb == 50)
+    {
         wolf->fire = 0;
-    nb++;
+        weapon_anim(wolf, 0);
     }
-    old_frame = wolf->frame_number;
+    else
+         weapon_anim(wolf, 0);
+    nb++;
 }
 void    display_weapon(t_wolf *wolf)
 {

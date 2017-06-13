@@ -6,7 +6,7 @@
 /*   By: vafanass <vafanass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/11 18:41:47 by vafanass          #+#    #+#             */
-/*   Updated: 2017/06/13 12:05:51 by vafanass         ###   ########.fr       */
+/*   Updated: 2017/06/13 12:41:34 by vafanass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ void 	init_wolf(t_wolf *wolf)
 	wolf->rect = malloc(sizeof(SDL_Rect));
 	SDL_GetWindowSize(wolf->esdl->eng.win, &wolf->rect->w, &wolf->rect->h);
 	wolf->surf = esdl_create_surface(wolf->rect->w, wolf->rect->h);
-    //fill_surface(wolf->surf, 0xFFFFFF00);
 	wolf->time = 0;
 	wolf->rect->x = 0;
 	wolf->rect->y = 0;
