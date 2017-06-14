@@ -6,7 +6,7 @@
 /*   By: vafanass <vafanass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/07 13:16:42 by vafanass          #+#    #+#             */
-/*   Updated: 2017/06/14 14:16:52 by vafanass         ###   ########.fr       */
+/*   Updated: 2017/06/14 15:54:24 by vafanass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static void	outline_map(t_wolf *wolf)
 {
 	int	i;
+
 	i = 0;
 	while (++i < 24)
 	{
@@ -36,6 +37,7 @@ static void	outline_map(t_wolf *wolf)
 static void	maze_map(t_wolf *wolf)
 {
 	int i;
+
 	i = 2;
 	while (i < 8)
 	{
@@ -55,16 +57,16 @@ static void	maze_map(t_wolf *wolf)
 		{
 			wolf->map[i][10] = 8;
 			wolf->map[i][18] = 8;
-			wolf->map[3][i + 8] = 8;
 			wolf->map[9][i + 8] = 8;
 		}
 	}
 	wolf->map[9][13] = 4;
 }
 
-void	fill_map(t_wolf *wolf)
+void		fill_map(t_wolf *wolf)
 {
-	int i,j;
+	int i;
+	int	j;
 
 	i = 0;
 	while (i < 24)
@@ -79,19 +81,24 @@ void	fill_map(t_wolf *wolf)
 	}
 	outline_map(wolf);
 	maze_map(wolf);
-	
-/*	int x;
+}
+
+void		print_map(t_wolf *wolf)
+{
+	int x;
 	int	y;
+
 	x = 0;
 	while (x < 24)
 	{
 		y = 0;
 		while (y < 24)
 		{
-			printf("%d ", wolf->map[x][y]);
+			ft_putnbr(wolf->map[x][y]);
+			ft_putchar(' ');
 			y++;
 		}
-		printf("\n");
+		ft_putchar('\n');
 		x++;
-	}*/
+	}
 }

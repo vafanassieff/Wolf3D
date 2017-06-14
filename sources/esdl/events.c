@@ -6,13 +6,13 @@
 /*   By: vafanass <vafanass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 14:47:31 by vafanass          #+#    #+#             */
-/*   Updated: 2017/06/13 12:34:35 by vafanass         ###   ########.fr       */
+/*   Updated: 2017/06/14 15:24:11 by vafanass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-static int			esdl_get_mouse(SDL_Event *event, t_input *in)
+static int			esdl_get_mouse_button(SDL_Event *event, t_input *in)
 {
 	int				ret;
 
@@ -61,15 +61,14 @@ void				esdl_update_events(t_input *in)
 	int				ret;
 
 	ret = 0;
-	SDL_GetMouseState(&in->m_x, &in->m_y);
-	SDL_GetRelativeMouseState(&in->m_r_x, &in->m_r_y);
 	while (SDL_PollEvent(&event))
 	{
-		if (event.type == SDL_QUIT || event.key.keysym.scancode == SDL_SCANCODE_ESCAPE)
+		if (event.type == SDL_QUIT || event.key.keysym.scancode ==
+			SDL_SCANCODE_ESCAPE)
 			in->quit = 1;
 		if ((ret += esdl_get_input(&event, in)) > 0)
 			break ;
-		if ((ret += esdl_get_mouse(&event, in)) > 0)
+		if ((ret += esdl_get_mouse_button(&event, in)) > 0)
 			break ;
 	}
 }

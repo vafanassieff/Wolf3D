@@ -6,7 +6,7 @@
 /*   By: vafanass <vafanass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 10:14:03 by vafanass          #+#    #+#             */
-/*   Updated: 2017/06/13 11:28:48 by vafanass         ###   ########.fr       */
+/*   Updated: 2017/06/14 16:30:59 by vafanass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,20 @@
 
 # include <SDL.h>
 
-typedef struct s_timer
+typedef struct	s_timer
 {
-  int 	fps;
-  int 	current;
-  int 	update;
-  int 	limit;
-  UINT 	framelimit;
-} t_timer;
+	int				fps;
+	int				current;
+	int				update;
+	int				limit;
+	UINT			framelimit;
+}				t_timer;
 
 typedef struct	s_input
 {
 	char			key[SDL_NUM_SCANCODES];
 	char			button[8];
-	int				mw_y;
-	int				m_x;
-	int				m_y;
-	int				m_r_x;
-	int				m_r_y;
 	char			quit;
-	char			window;
 }				t_input;
 
 typedef struct	s_engine
@@ -50,7 +44,7 @@ typedef	struct	s_esdl
 {
 	t_engine		eng;
 	int				run;
-	t_timer fps;
+	t_timer			fps;
 }				t_esdl;
 
 /*
@@ -69,7 +63,7 @@ void			esdl_put_pixel(SDL_Surface *surf, const int x, const int y,
 				const int color);
 Uint32			esdl_read_pixel(SDL_Surface *surf, const int x, const int y);
 
-void esdl_fps_limit(t_esdl *esdl);
+void			esdl_fps_limit(t_esdl *esdl);
 
 void			esdl_exit(t_esdl *esdl);
 

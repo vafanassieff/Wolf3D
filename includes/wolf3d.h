@@ -6,7 +6,7 @@
 /*   By: vafanass <vafanass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 12:06:18 by vafanass          #+#    #+#             */
-/*   Updated: 2017/06/14 14:15:47 by vafanass         ###   ########.fr       */
+/*   Updated: 2017/06/14 16:23:57 by vafanass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ typedef	struct		s_wolf
 	int				drawstart;
 	int				drawend;
 	int				color;
-	int 			texx;
-	int 			texy;
+	int				texx;
+	int				texy;
 	int				textnb;
 	int				floortexx;
 	int				floortexy;
@@ -75,17 +75,17 @@ typedef	struct		s_wolf
 	double			movespeed;
 	double			rotspeed;
 	double			frametime;
-	double 			olddirx;
-	double 			oldplanex;
-	double 			wallx;
-	double 			floorxwall;
+	double			olddirx;
+	double			oldplanex;
+	double			wallx;
+	double			floorxwall;
 	double			floorywall;
-	double 			distfromwall;
+	double			distfromwall;
 	double			distplayer;
 	double			currentdist;
-	double 			weight;
-	double 			currentfloorx;
-	double 			currentfloory;
+	double			weight;
+	double			currentfloorx;
+	double			currentfloory;
 }					t_wolf;
 
 SDL_Surface			*load_texture(char *path, t_wolf *wolf);
@@ -96,8 +96,11 @@ void				wolf_raycasting(t_wolf *wolf);
 void				fill_map(t_wolf *wolf);
 void				wolf_speed(t_wolf *wolf);
 void				texture_floor(t_wolf *wolf);
-void 				init_wolf(t_wolf *wolf);
+void				init_wolf(t_wolf *wolf);
 void				init_texture(t_wolf *wolf);
-void    			display_weapon(t_wolf *wolf);
+void				display_weapon(t_wolf *wolf);
+void				wolf_use_button(t_wolf *wolf);
+void				wolf_left_button(t_wolf *wolf);
+void				wolf_left_shift(t_wolf *wolf);
 
 #endif

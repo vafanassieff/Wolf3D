@@ -6,7 +6,7 @@
 /*   By: vafanass <vafanass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 12:55:00 by vafanass          #+#    #+#             */
-/*   Updated: 2017/06/11 19:37:17 by vafanass         ###   ########.fr       */
+/*   Updated: 2017/06/14 15:26:46 by vafanass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,22 +49,22 @@ SDL_Surface		*esdl_create_surface(int width, int height)
 	return (surf);
 }
 
-void	remove_color_from_surface(SDL_Surface *surface, uint32_t color)
+void			remove_color_from_surface(SDL_Surface *surface, uint32_t color)
 {
 	register int x;
 	register int y;
-	
+
 	x = 0;
 	while (++x < surface->w)
 	{
 		y = 0;
 		while (++y < surface->h)
-			if (esdl_read_pixel(surface ,x, y) == color)
+			if (esdl_read_pixel(surface, x, y) == color)
 				esdl_put_pixel(surface, x, y, 0x00000000);
 	}
 }
 
-void	fill_surface(SDL_Surface *surface, uint32_t color)
+void			fill_surface(SDL_Surface *surface, uint32_t color)
 {
 	register int x;
 	register int y;

@@ -54,6 +54,7 @@ SRC =		esdl/events.c\
 			wolf_init.c\
 			wolf_weapon.c\
 			wolf_events.c\
+			wolf_event_bis.c\
 			wolf_display.c\
 			main.c
 

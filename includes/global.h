@@ -6,7 +6,7 @@
 /*   By: vafanass <vafanass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 12:10:49 by vafanass          #+#    #+#             */
-/*   Updated: 2017/06/14 13:33:50 by vafanass         ###   ########.fr       */
+/*   Updated: 2017/06/14 16:24:11 by vafanass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@
 
 # define TEXT_ICON			"./ressources/icon/wolf_icon.bmp"
 
-# define TEXT_WIDTH			64
-# define TEXT_HEIGHT 		64
+# define TEXT_W				64
+# define TEXT_H				64
 # define NB_TEXTURE			8
 # define ANIME_SHOTGUN      6
 
