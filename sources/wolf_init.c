@@ -6,7 +6,7 @@
 /*   By: vafanass <vafanass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/11 18:41:47 by vafanass          #+#    #+#             */
-/*   Updated: 2017/06/13 12:41:34 by vafanass         ###   ########.fr       */
+/*   Updated: 2017/06/14 13:34:10 by vafanass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void		init_texture(t_wolf *wolf)
 	wolf->wall_texture[4] = load_texture(TEXT_SWITCHON, wolf);
 	wolf->wall_texture[5] = load_texture(TEXT_HITLER, wolf);
 	wolf->wall_texture[6] = load_texture(TEXT_WPGREEN, wolf);
-	wolf->wall_texture[7] = load_texture(TEXT_FLOOR	, wolf);
+	wolf->wall_texture[7] = load_texture(TEXT_WPGREENSS, wolf);
 	wolf->floor_texture = load_texture(TEXT_FLOOR, wolf);
 	wolf->ceiling_texture = load_texture(TEXT_CEILING, wolf);
 	wolf->icon = load_texture(TEXT_ICON, wolf);

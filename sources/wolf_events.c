@@ -6,7 +6,7 @@
 /*   By: vafanass <vafanass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/05 13:23:21 by vafanass          #+#    #+#             */
-/*   Updated: 2017/06/13 12:33:55 by vafanass         ###   ########.fr       */
+/*   Updated: 2017/06/14 14:14:48 by vafanass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,14 @@ void	wolf_left_button(t_wolf *wolf)
 	wolf->fire = 1;
 }
 
+void	wolf_use_button(t_wolf *wolf)
+{
+	if (wolf->map[(int)wolf->posx - 1][(int)wolf->posy] == 4)
+	{
+		wolf->map[(int)wolf->posx - 1][(int)wolf->posy] = 5;
+		wolf->map[(int)wolf->posx - 1][(int)wolf->posy + 2] = 0;
+	}
+}
 void	wolf_events(t_wolf *wolf, t_input *in)
 {
 	esdl_update_events(in);
@@ -73,5 +81,6 @@ void	wolf_events(t_wolf *wolf, t_input *in)
 		wolf_left_shift(wolf);
 	if(in->button[SDL_BUTTON_LEFT])
 		wolf_left_button(wolf);
-
+	if(in->key[SDL_SCANCODE_E])
+		wolf_use_button(wolf);
 }

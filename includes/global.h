@@ -6,7 +6,7 @@
 /*   By: vafanass <vafanass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 12:10:49 by vafanass          #+#    #+#             */
-/*   Updated: 2017/06/13 12:49:53 by vafanass         ###   ########.fr       */
+/*   Updated: 2017/06/14 13:33:50 by vafanass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,11 @@
 # define TEXT_SWITCHON		"./ressources/texture/SteelwallswitchonL.bmp"
 # define TEXT_HITLER		"./ressources/texture/StoneUWHitlerL.bmp"
 # define TEXT_WPGREEN		"./ressources/texture/WallpapergreenL.bmp"
+# define TEXT_WPGREENSS		"./ressources/texture/WallpapergreenSSL.bmp"
 # define TEXT_FLOOR			"./ressources/texture/005-doomhexred.bmp"
 # define TEXT_CEILING		"./ressources/texture/021-brickgreybrownmould1.bmp"
+
 # define TEXT_ICON			"./ressources/icon/wolf_icon.bmp"
-# define TEXT_SHOTGUN		"./ressources/sprite/shotgun.bmp"
 
 # define TEXT_WIDTH			64
 # define TEXT_HEIGHT 		64

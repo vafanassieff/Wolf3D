@@ -6,7 +6,7 @@
 /*   By: vafanass <vafanass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/07 13:16:42 by vafanass          #+#    #+#             */
-/*   Updated: 2017/06/11 18:47:08 by vafanass         ###   ########.fr       */
+/*   Updated: 2017/06/14 14:16:52 by vafanass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static void	outline_map(t_wolf *wolf)
 			wolf->map[i][23] = 2;
 		}
 	}
+	wolf->map[0][0] = 1;
 }
 
 static void	maze_map(t_wolf *wolf)
@@ -43,6 +44,22 @@ static void	maze_map(t_wolf *wolf)
 		wolf->map[i][6] = 7;
 		i = i + 2;
 	}
+	i = 2;
+	while (++i < 10)
+	{
+		wolf->map[i][10] = 7;
+		wolf->map[i][18] = 7;
+		wolf->map[3][i + 8] = 7;
+		wolf->map[9][i + 8] = 7;
+		if (i % 4 == 0)
+		{
+			wolf->map[i][10] = 8;
+			wolf->map[i][18] = 8;
+			wolf->map[3][i + 8] = 8;
+			wolf->map[9][i + 8] = 8;
+		}
+	}
+	wolf->map[9][13] = 4;
 }
 
 void	fill_map(t_wolf *wolf)
@@ -63,7 +80,7 @@ void	fill_map(t_wolf *wolf)
 	outline_map(wolf);
 	maze_map(wolf);
 	
-	/*int x;
+/*	int x;
 	int	y;
 	x = 0;
 	while (x < 24)
