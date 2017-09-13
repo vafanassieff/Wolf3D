@@ -9,7 +9,7 @@ The game is limited to 60 FPS.
 Compile using make and run with ./wolf3d
 
 ## Preview
-![](https://media.giphy.com/media/l1J9GQxUzx01RPPBC/giphy.gif)
+![](https://raw.githubusercontent.com/vafanassieff/Wolf3D/master/wolf3d.png)
 
 ## Keyboard shortcuts
 
